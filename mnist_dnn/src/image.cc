@@ -14,6 +14,7 @@
 
 #include "image.h"
 
+// 构造函数申请内存
 Image::Image(int h, int w, int c) {
     rows = h;
     cols = w;
@@ -22,11 +23,13 @@ Image::Image(int h, int w, int c) {
     data = new float[size];
 };
 
+// 析构函数，释放内存
 Image::~Image(){
     delete[] data;
     data = nullptr;
 };
 
+// 拷贝构造函数，重新申请内存和拷贝数据
 Image::Image(const Image &rhs) {
     rows = rhs.rows;
     cols = rhs.cols;
@@ -37,6 +40,7 @@ Image::Image(const Image &rhs) {
     memcpy(data, rhs.data, rhs.size * sizeof(float));
 };
 
+// 按照 [H, W, C] 返回索引像素值的引用
 float& Image::at(int y, int x, int z) {
     assert(x < cols && y < rows && z < channels);
     return data[x + y*cols + z*rows*cols];
@@ -52,6 +56,7 @@ Image Image::gray() {
     return im;
 }
 
+// 自己写了一个图像的最近邻插值函数
 Image Image::resize(int w, int h) {
     assert(w > 0 & h > 0);
     // 求出 resize 的宽高比例
@@ -74,6 +79,7 @@ Image Image::resize(int w, int h) {
 
 
 // 利用 stb_image.h 和 stb_image_write.h 来读写图片
+// https://github.com/nothings/stb/blob/master/stb_image.h
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 #define STB_IMAGE_WRITE_IMPLEMENTATION
