@@ -1,4 +1,4 @@
-OBJ=image.o
+OBJ=image.o tensor.o
 EXOBJ=main.o
 
 VPATH=./src/:./
