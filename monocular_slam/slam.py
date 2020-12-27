@@ -20,8 +20,6 @@ from multiprocessing import Process, Queue
 from skimage.measure import ransac
 from skimage.transform import EssentialMatrixTransform
 
-
-
 class Map:
     def __init__(self, W, H):
         self.width  = W
@@ -259,7 +257,7 @@ def process_frame(frame):
 
         good_pt4d = check_points(points4d)
         points4d = points4d[good_pt4d]
-
+        # TODO: g2o 后端优化
         draw_points(frame)
     mapp.add_observation(frame.curr_pose, points4d)     # 将当前的 pose 和点云放入地图中
     # 将当前帧的 pose 信息存储为下一帧的 last_pose 信息
