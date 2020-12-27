@@ -37,30 +37,9 @@ Image::Image(const Image &rhs) {
     memcpy(data, rhs.data, rhs.size * sizeof(float));
 };
 
-Image& Image::operator=(const Image &rhs) {
-    if(&rhs != this){
-        rows = rhs.rows;
-        cols = rhs.cols;
-        size = rhs.size;
-        channels = rhs.channels;
-
-        // 必须释放原有的内存，然后再重新申请一块内存
-        delete[] data;
-        data = new float[size];
-        memcpy(data, rhs.data, rhs.size * sizeof(float));
-    }
-    return *this;
-}
-
 float& Image::at(int y, int x, int z) {
     assert(x < cols && y < rows && z < channels);
     return data[x + y*cols + z*rows*cols];
-}
-
-Image Image::copy() {
-    Image im(rows, cols, channels);
-    memcpy(im.data, data, im.size * sizeof(float));
-    return im;
 }
 
 // 彩色图转灰度图，三个颜色通道求平均即可

@@ -12,6 +12,6 @@
 #include "image.h"
 
 int main() {
-    Image image = imread("test.png");
-    imwrite("test_2.png", image);
+    Image image = imread("/Users/yangyun/Desktop/1.png");
+    imwrite("test.png", image);
 }
