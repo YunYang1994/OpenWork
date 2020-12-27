@@ -96,7 +96,6 @@ Tensor Tensor::matmul(const Tensor & rhs) {
             }
         }
     }
-
     return out;
 }
 
