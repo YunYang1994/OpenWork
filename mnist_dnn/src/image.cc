@@ -14,27 +14,19 @@
 #include "image.h"
 
 // 构造函数申请内存
-Image::Image(int h, int w, int c) {
-    rows = h;
-    cols = w;
-    channels = c;
+Image::Image(int h, int w, int c): rows(h), cols(w), channels(c) {
     size = h * w * c;
     data = new float[size];
 };
 
 // 析构函数，释放内存
-Image::~Image(){
+Image::~Image() {
     delete[] data;
     data = nullptr;
 };
 
 // 拷贝构造函数，重新申请内存和拷贝数据
-Image::Image(const Image &rhs) {
-    rows = rhs.rows;
-    cols = rhs.cols;
-    size = rhs.size;
-    channels = rhs.channels;
-    // 重新申请一块内存，并将数据拷贝过来
+Image::Image(const Image &rhs): rows(rhs.rows), cols(rhs.cols), channels(rhs.channels), size(rhs.size) {
     data = new float[size];
     memcpy(data, rhs.data, rhs.size * sizeof(float));
 };

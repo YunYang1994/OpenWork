@@ -14,15 +14,13 @@
 #include "tensor.h"
 
 // 申请内存并初始化每个元素为 0.f
-Tensor::Tensor(int m, int n) {
-    rows = m;
-    cols = n;
+Tensor::Tensor(int m, int n): rows(m), cols(n) {
     data = new float[m*n];
     fill(0.f);
 }
 
-// 利用一块内存初始化
-Tensor::Tensor(float *ptr, int m, int n) {
+// 构造函数，拷贝 ptr 所指向的数据
+Tensor::Tensor(float *ptr, int m, int n): rows(m), cols(n) {
     int s = m * n;
     data = new float[s];
     for (int i=0; i<s; i++) {
@@ -31,9 +29,7 @@ Tensor::Tensor(float *ptr, int m, int n) {
 }
 
 // 拷贝构造函数
-Tensor::Tensor (const Tensor & rhs) {
-    rows = rhs.rows;
-    cols = rhs.cols;
+Tensor::Tensor (const Tensor & rhs): rows(rhs.rows), cols(rhs.cols) {
     data = new float[rows*cols];
     memcpy(data, rhs.data, (rows*cols) * sizeof(float));
 }
