@@ -20,6 +20,7 @@ from multiprocessing import Process, Queue
 from skimage.measure import ransac
 from skimage.transform import EssentialMatrixTransform
 
+# 构建地图，显示角点的电云和相机的位姿
 class Map:
     def __init__(self, W, H):
         self.width  = W
@@ -82,7 +83,7 @@ class Map:
         points = np.array(self.points)
         self.q.put((poses, points))
 
-
+# 利用相机内参对角点的像素坐标进行归一化
 def normalize(K, pts):
     Kinv = np.linalg.inv(K)
     # turn [[x,y]] -> [[x,y,1]]
@@ -107,7 +108,7 @@ class Frame(object):
         self.last_des  = Frame.last_des
         self.last_pose = Frame.last_pose
 
-
+# 提取 orb 角点
 def extract_points(frame):
     orb = cv2.ORB_create()
     image = cv2.cvtColor(frame.image, cv2.COLOR_BGR2GRAY)
@@ -120,7 +121,7 @@ def extract_points(frame):
     kps = np.array([(kp.pt[0], kp.pt[1]) for kp in kps])
     return kps, des
 
-
+# 当前帧的角点和上一帧的进行配准
 def match_points(frame):
     bfmatch = cv2.BFMatcher(cv2.NORM_HAMMING)
     matches = bfmatch.knnMatch(frame.curr_des, frame.last_des, k=2)
@@ -141,6 +142,7 @@ def match_points(frame):
 
     return match_kps
 
+# 八点法对本质矩阵求解
 def fit_essential_matrix(match_kps):
     global K
     match_kps = np.array(match_kps)
@@ -161,6 +163,7 @@ def fit_essential_matrix(match_kps):
 
     return model.params
 
+# 从本质矩阵中分解出相机运动 R、t
 def extract_Rt(E):
     W = np.mat([[0,-1,0],[1,0,0],[0,0,1]],dtype=float)
     U,d,Vt = np.linalg.svd(E)
@@ -182,6 +185,7 @@ def extract_Rt(E):
     Rt[:3, 3] = t
     return Rt          # Rt 为从相机坐标系的位姿变换到世界坐标系的位姿
 
+# opencv 的三角测量函数
 # def triangulate(pts1, pts2, pose1, pose2):
     # pts1 = normalize(pts1)
     # pts2 = normalize(pts2)
@@ -194,6 +198,7 @@ def extract_Rt(E):
     # return points4d
 
 
+# 自己写的的三角测量函数
 def triangulate(pts1, pts2, pose1, pose2):
     global K
     pose1 = np.linalg.inv(pose1)            # 从世界坐标系变换到相机坐标系的位姿, 因此取逆
@@ -215,7 +220,7 @@ def triangulate(pts1, pts2, pose1, pose2):
     points4d /= points4d[:, 3:]            # 归一化变换成齐次坐标 [x, y, z, 1]
     return points4d
 
-
+# 画出角点的运动轨迹
 def draw_points(frame):
     for kp1, kp2 in zip(frame.curr_kps, frame.last_kps):
         u1, v1 = int(kp1[0]), int(kp1[1])
@@ -224,9 +229,11 @@ def draw_points(frame):
         cv2.line(frame.image, (u1, v1), (u2, v2), color=(255,0,0))
     return None
 
+# 筛选角点
 def check_points(points4d):
     # 判断3D点是否在两个摄像头前方
     good_points = points4d[:, 2] > 0
+    # TODO: parallax、重投投影误差筛选等等 ....
     return good_points
 
 def process_frame(frame):
