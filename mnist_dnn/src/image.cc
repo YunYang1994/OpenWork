@@ -11,7 +11,6 @@
 
 #include <assert.h>
 #include <iostream>
-
 #include "image.h"
 
 // 构造函数申请内存

@@ -73,22 +73,22 @@ void Tensor::fill(float value) {
 
 // for 循环每个元素除以 value
 Tensor Tensor::div(float value) {
-    Tensor tensor(rows, cols);
+    Tensor out(rows, cols);
     int s = rows * cols;
     for (int i=0; i<s; i++) {
-        tensor.data[i] /= value;
+        out.data[i] /= value;
     }
-    return tensor;
+    return out;
 }
 
 // for 循环每个元素乘以 value
 Tensor Tensor::mul(float value) {
-    Tensor tensor(rows, cols);
+    Tensor out(rows, cols);
     int s = rows * cols;
     for (int i=0; i<s; i++) {
-        tensor.data[i] *= value;
+        out.data[i] *= value;
     }
-    return tensor;
+    return out;
 }
 
 // 两个矩阵相乘
