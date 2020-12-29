@@ -20,7 +20,7 @@ from multiprocessing import Process, Queue
 from skimage.measure import ransac
 from skimage.transform import EssentialMatrixTransform
 
-# 构建地图，显示角点的电云和相机的位姿
+# 构建地图，显示角点的点云和相机的位姿
 class Map:
     def __init__(self, W, H):
         self.width  = W
