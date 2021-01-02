@@ -1,4 +1,4 @@
-OBJ=image.o tensor.o
+OBJ=image.o tensor.o data.o
 EXOBJ=main.o
 
 VPATH=./src/:./
@@ -13,7 +13,7 @@ ARFLAGS=rcs
 OPTS=-Ofast
 LDFLAGS= -lm -pthread 
 COMMON= -Iinclude/ -Isrc/ 
-CFLAGS=-Wall -Wno-unknown-pragmas -Wfatal-errors -fPIC
+CFLAGS=-Wall -Wno-unknown-pragmas -Wfatal-errors -std=c++11
 
 EXOBJS = $(addprefix $(OBJDIR), $(EXOBJ))
 OBJS = $(addprefix $(OBJDIR), $(OBJ))

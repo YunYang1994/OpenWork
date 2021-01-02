@@ -13,26 +13,34 @@
 
 #include "image.h"
 #include "tensor.h"
+#include "data.h"
 
 int main() {
-    Image image = imread("/Users/yangyun/Desktop/1.png");
-    Tensor tensor(image.gray().data, 28, 28);
-    tensor[0][0] = 1;
-    std::cout << tensor[0][0] << std::endl;
+    // Image image = imread("/Users/yangyun/Desktop/1.png");
+    // Tensor tensor(image.gray().data, 28, 28);
+    // tensor[0][0] = 1;
+    // std::cout << tensor[0][0] << std::endl;
 
     Tensor a(3,4);
     Tensor b(4,3);
 
-    a.fill(1);
-    b.fill(2);
+    // a.fill(1);
+    // b.fill(2);
 
-    a[0][2] = 13.1;
-    b[1][2] = 21.1;
-    a[1][2] = -1.123;
+    // a[0][2] = 13.1;
+    // b[1][2] = 21.1;
+    // a[1][2] = -1.123;
 
-    Tensor c = a.matmul(b);
-    std::cout << c[0][0] << " " << c[2][2] << std::endl;
-    std::cout << c[1][1] << " " << c[1][2] << std::endl;
+    // Tensor c = a.matmul(b);
+    // std::cout << c[0][0] << " " << c[2][2] << std::endl;
+    // std::cout << c[1][1] << " " << c[1][2] << std::endl;
 
-    imwrite("test.png", image);
+    Data d(a, b);
+    Data m(d);
+
+    std::cout << a.data << std::endl;
+    std::cout << d.X.data << std::endl;
+    std::cout << m.X.data << std::endl;
+
+    // imwrite("test.png", image);
 }
