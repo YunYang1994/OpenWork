@@ -39,10 +39,10 @@ Data loadMnistData(const char *mnist_path, const char *images_file) {
     std::fstream fin(images_file, std::ios::in);
     std::vector<std::string> image_paths;
 
+    // 一行一行地解析图片路径
     if (fin.is_open()) {
         std::string line;
         while (std::getline(fin, line)) {
-            // 一行一行地解析图片路径
             std::string image_path = mnist_path + line;
             image_paths.push_back(image_path);
         }
