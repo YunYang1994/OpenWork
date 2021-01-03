@@ -8,4 +8,5 @@ $ tar xvzf mnist.tar.gz
 
 ```
 $ make
+$ ./yynet 
 ```
