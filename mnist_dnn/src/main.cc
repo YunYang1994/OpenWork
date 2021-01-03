@@ -35,12 +35,8 @@ int main() {
     // std::cout << c[0][0] << " " << c[2][2] << std::endl;
     // std::cout << c[1][1] << " " << c[1][2] << std::endl;
 
-    Data d(a, b);
-    Data m(d);
-
-    std::cout << a.data << std::endl;
-    std::cout << d.X.data << std::endl;
-    std::cout << m.X.data << std::endl;
-
+    auto d = loadMnistData("/Users/yangyun/", "/Users/yangyun/mnist/mnist.train");
+    std::cout << d.X[12][12] << std::endl;
+    std::cout << d.X.rows << std::endl;
     // imwrite("test.png", image);
 }

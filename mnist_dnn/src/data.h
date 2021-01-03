@@ -10,7 +10,6 @@
 *===============================================================*/
 
 #pragma once
-#include <iostream>
 #include "tensor.h"
 
 // 构造一个数据集类
@@ -28,4 +27,5 @@ public:
     Data randomBatch(int n);
 };
 
-Data loadMnistData(char *mnist_path, char *images_file, char *labels_file);
+// 读取 mnist 数据集
+Data loadMnistData(const char *mnist_path, const char *images_file);
