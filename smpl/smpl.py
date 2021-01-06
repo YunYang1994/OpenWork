@@ -20,15 +20,13 @@ import numpy as np
 smpl = pickle._Unpickler(open("/Users/yang/models/basicmodel_f_lbs_10_207_0_v1.0.0.pkl", "rb"), encoding='latin1')
 smpl = smpl.load()      # smpl 是一个字典，关键的 key 如下：
 
-"""
-J_regressor: (24, 6890), 与 vertices (6890, 3) 相乘边得到 joints 位置 (24, 3)
-f: (13776, 3)，faces，我们说到 mesh 除了有 vertices 组成，还有一个 triangle list，每个 triangle 由三个 vertices index 组成
-kintree_table: (2, 24)，一般取第一行，这就是上面提到的每个点的父节点
-weights: (6890, 24), blend weights, 定义了顶点受每个 joint 旋转矩阵影响的权重
-shapedirs: (6890, 3, 10), 表示体型参数到 shape blend shape 的映射关系
-posedirs: (6890, 3, 207), 表示姿势参数到 pose blend shape 的映射关系
-v_template: (6890, 3), 人体基模版的 vertices
-"""
+# J_regressor: (24, 6890), 与 vertices (6890, 3) 相乘边得到 joints 位置 (24, 3)
+# f: (13776, 3)，faces，我们说到 mesh 除了有 vertices 组成，还有一个 triangle list，每个 triangle 由三个 vertices index 组成
+# kintree_table: (2, 24)，一般取第一行，这就是上面提到的每个点的父节点
+# weights: (6890, 24), blend weights, 定义了顶点受每个 joint 旋转矩阵影响的权重
+# shapedirs: (6890, 3, 10), 表示体型参数到 shape blend shape 的映射关系
+# posedirs: (6890, 3, 207), 表示姿势参数到 pose blend shape 的映射关系
+# v_template: (6890, 3), 人体基模版的 vertices
 
 #============================ Part 1: 显示基模版 v_template 下的人体, 并设置 betas 和 poses 参数, 见论文 figure 3(a)
 # render(smpl['v_template'], smpl['f'])
@@ -141,4 +139,3 @@ v_posed_homo = np.vstack((v_posed.T, np.ones([1, v_posed.shape[0]])))
 v = np.matmul(T, v_posed_homo.T.reshape([-1, 4, 1]))
 v = v.reshape([-1, 4])[:,:3]    # 由于是齐次矩阵，取前3列
 util.render(v, smpl['f'])
-
