@@ -12,6 +12,7 @@
 ### 使用说明
 
 ```bashrc
+$ wget https://github.com/YunYang1994/OpenWork/releases/download/v1.0/road.mp4
 $ ./slam.py
 ```
 
