@@ -3,7 +3,7 @@
 
 ## 内容简介
 
-使用 [**yolov5s.onnx**](https://github.com/YunYang1994/openwork/releases/download/v1.0/yolov5s.onnx) 并量化成 FP16 精度的 [**yolov5s_fp16.onnx.mnn**](https://github.com/YunYang1994/openwork/tree/main/yolov5s_ios/resource)。 图像处理使用的是 OpenCV，模型推理使用的是阿里的 [MNN](https://github.com/alibaba/MNN) 框架。可以直接编译安装使用，在 iphone 手机上运行。
+使用 [**yolov5s.onnx**](https://github.com/YunYang1994/openwork/releases/download/v1.0/yolov5s.onnx) 并量化成 FP16 精度的 [**yolov5s_fp16.onnx.mnn（把它放在resource文件下**](https://github.com/YunYang1994/OpenWork/releases/download/v1.0/yolov5s_fp16.onnx.mnn)，像处理使用的是 OpenCV，模型推理使用的是阿里的 [MNN](https://github.com/alibaba/MNN) 框架。可以直接编译安装使用，在 iphone 手机上运行。
 
 ## 安装使用
 
