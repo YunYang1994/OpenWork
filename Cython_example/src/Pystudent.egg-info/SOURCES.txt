@@ -1,0 +1,10 @@
+README.md
+setup.py
+src/Pystudent.egg-info/PKG-INFO
+src/Pystudent.egg-info/SOURCES.txt
+src/Pystudent.egg-info/dependency_links.txt
+src/Pystudent.egg-info/requires.txt
+src/Pystudent.egg-info/top_level.txt
+src/student/__init__.py
+src/student/student_module.cpp
+src/student/lib/libstudent.so
