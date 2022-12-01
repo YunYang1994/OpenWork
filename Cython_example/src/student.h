@@ -1,17 +1,18 @@
 /*
- * @author     : yangyun
- * @date       : 2022-11-25
- * @description: student.h
- * @version    : 1.0
+ * Copyright 2022 YunYang1994 All Rights Reserved. 
+ * @Author: YunYang1994
+ * @FilePath: student.h
+ * @Date: 2022-12-01 16:15:20
  */
+
 #include <stdint.h>
 
 #ifdef _MSC_VER
-#ifdef STUDENT_EXPORTS
+#ifdef student_EXPORTS                          // 该宏在 windows 下会自动生成
 #define STUDENT_EXPORT __declspec(dllexport)
 #else
 #define STUDENT_EXPORT __declspec(dllimport)
-#endif // STUDENT_EXPORTS
+#endif
 #else
 #define STUDENT_EXPORT __attribute__((visibility("default")))
 #endif

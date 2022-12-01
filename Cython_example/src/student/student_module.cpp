@@ -4,14 +4,14 @@
 {
     "distutils": {
         "depends": [
-            "src/student/include/student.h"
+            "src\\student\\include\\student.h"
         ],
         "extra_compile_args": [
             "-std=c++11"
         ],
         "include_dirs": [
             "src/student/include",
-            "/home/yangyun/.local/lib/python3.8/site-packages/numpy/core/include"
+            "C:\\Users\\Administrator\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.8_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python38\\site-packages\\numpy\\core\\include"
         ],
         "language": "c++",
         "libraries": [
@@ -1004,7 +1004,7 @@ static const char *__pyx_filename;
 
 static const char *__pyx_f[] = {
   "stringsource",
-  "src/student/student_module.pyx",
+  "src\\student\\student_module.pyx",
 };
 /* MemviewSliceStruct.proto */
 struct __pyx_memoryview_obj;
