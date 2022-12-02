@@ -5,7 +5,7 @@
  * @Date: 2022-12-02 10:23:18
 -->
 
-由于动态库路径的问题，Windows 下不适合编译成 wheel 文件。首先用 VSCode 编译，然后运行：
+由于动态库路径的问题，Windows 下不适合编译成 wheel 文件，推荐打包成 pyd 文件。首先用 VSCode 编译，然后运行：
 
 ```
 $ ./bin/Release/demo.exe
