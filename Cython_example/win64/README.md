@@ -12,3 +12,6 @@ $ ./bin/Release/demo.exe
 $ python setup.py build_ext -i
 $ python test.py
 ```
+
+- [unsigned char 和 uint8_t 有啥区别](https://blog.csdn.net/u011068702/article/details/77917498)
+- [use Ctyhon to work with Numpy](https://cython.readthedocs.io/en/latest/src/tutorial/numpy.html)
