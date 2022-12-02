@@ -1,7 +1,2 @@
-```
-$ mkdir build & cd build
-$ cmake .. & make install 
-$ cd ..
-$ python setup.py bdist_wheel
-$ pip install dist/*.whl
-```
+## Notion
+Linux 使用的是 Student 类进行示例，Windows 使用的是 image 类读写处理
