@@ -10,3 +10,4 @@ $ tar xvzf mnist.tar.gz
 $ make
 $ ./uwnet
 ```
+
