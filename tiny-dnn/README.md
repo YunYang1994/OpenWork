@@ -10,8 +10,3 @@ $ tar xvzf mnist.tar.gz
 $ make
 $ ./uwnet
 ```
-## 代码剖析
-
-| files | description |
-|---|:---:|
-|[stb_image.h](./src/stb_image.h)|[stb_image.md](./docs/stb_image.md)|
